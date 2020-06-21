@@ -46,8 +46,11 @@ function pushData() {
 } // end pushData
 
 function runTable(employeeArray) {
-    //clear table
+    //clear table and budget
     $('.mainTable').empty();
+    $('#cost').empty();
+
+    let sumOfSalary = 0    
     // loop through array and display data in table
     for (let i = 0; i < employeeArray.length; i++) {
         let tableEntry = 
@@ -61,14 +64,26 @@ function runTable(employeeArray) {
 
             </tr>`;
 
-        $('.mainTable').append(tableEntry);           
+        $('.mainTable').append(tableEntry);
+
+        sumOfSalary += Number(employeeArray[i].salary / 12);
+
     }
+    $('#cost').append(roundNumber(sumOfSalary));
+
     $('.deleteButton').on('click', removeData);
     return true;
 } // end runTable
 
+function roundNumber(x){
+    return Number.parseFloat(x).toFixed(2);
+}
+
 function removeData() {
     console.log('clicked delete');
+    $('.deleteButton').closest("tr").remove();
+    
+    
     
 } // end removeData
 
