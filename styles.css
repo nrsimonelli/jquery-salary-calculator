@@ -10,3 +10,12 @@ table{
     margin: auto;
     text-align: left;
 }
+#submitButton{
+    width: fit-content;
+    float: right;
+    
+}
+
+h3{
+    background-color: gold;
+}

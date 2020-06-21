@@ -7,14 +7,14 @@ $(document).ready(onReady);
 function onReady(){
     console.log('jQ online');
     clickListen();
+    
 
 } // end onReady
 
 
 function clickListen() {
     $('#submitButton').on('click', pushData);
-    $('#deleteButton').on('click', removeData);
-
+    $('.deleteButton').on('click', removeData);
     
 } // end clickListen
 
@@ -57,16 +57,18 @@ function runTable(employeeArray) {
                 <td>${employeeArray[i].id}</td>
                 <td>${employeeArray[i].title}</td>
                 <td>${employeeArray[i].salary}</td>
-                <td><button type="text" id="deleteButton">Delete</button></td>
+                <td><button class="deleteButton">Delete</button></td>
 
             </tr>`;
 
         $('.mainTable').append(tableEntry);           
     }
+    $('.deleteButton').on('click', removeData);
     return true;
 } // end runTable
 
 function removeData() {
+    console.log('clicked delete');
     
 } // end removeData
 
