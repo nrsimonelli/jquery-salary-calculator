@@ -72,6 +72,9 @@ function runTable(employeeArray) {
     $('#cost').append(roundNumber(sumOfSalary));
 
     $('.deleteButton').on('click', removeData);
+
+    checkColor(sumOfSalary);
+
     return true;
 } // end runTable
 
@@ -86,6 +89,16 @@ function removeData() {
     
     
 } // end removeData
+
+function checkColor(sumOfSalary) {
+    if ( sumOfSalary <= 20000){
+        $('.flag').css("background-color","blue");
+        
+    }else{
+        $('.flag').css("background-color","red");
+    }
+    
+}
 
 
 //handle click event
