@@ -14,7 +14,7 @@ function onReady(){
 
 function clickListen() {
     $('#submitButton').on('click', pushData);
-    $('.deleteButton').on('click', removeData);
+    $('#mainTable').on('click', '#deleteButton', removeData);
     
 } // end clickListen
 
@@ -47,7 +47,7 @@ function pushData() {
 
 function runTable(employeeArray) {
     //clear table and budget
-    $('.mainTable').empty();
+    $('#mainTable').empty();
     $('#cost').empty();
 
     let sumOfSalary = 0    
@@ -60,18 +60,17 @@ function runTable(employeeArray) {
                 <td>${employeeArray[i].id}</td>
                 <td>${employeeArray[i].title}</td>
                 <td>${employeeArray[i].salary}</td>
-                <td><button class="deleteButton">Delete</button></td>
+                <td><button id="deleteButton">Delete</button></td>
 
             </tr>`;
 
-        $('.mainTable').append(tableEntry);
+        $('#mainTable').append(tableEntry);
 
         sumOfSalary += Number(employeeArray[i].salary / 12);
 
     }
     $('#cost').append(roundNumber(sumOfSalary));
 
-    $('.deleteButton').on('click', removeData);
 
     checkColor(sumOfSalary);
 
@@ -84,7 +83,7 @@ function roundNumber(x){
 
 function removeData() {
     console.log('clicked delete');
-    $('.deleteButton').closest("tr").remove();
+    $('#deleteButton').parent(this).parent().remove();
     
     
     
@@ -99,8 +98,4 @@ function checkColor(sumOfSalary) {
     }
     
 }
-
-
-//handle click event
-//event.preventDefault();
 
