@@ -8,7 +8,7 @@ function onReady(){
     console.log('jQ online');
     clickListen();
 
-}
+} // end onReady
 
 
 function clickListen() {
@@ -16,9 +16,10 @@ function clickListen() {
     $('#deleteButton').on('click', removeData);
 
     
-}   
+} // end clickListen
 
 function pushData() {
+    // object creation
     const newEntry = {
         first: $('#firstName').val(),
         last: $('#lastName').val(),
@@ -30,6 +31,7 @@ function pushData() {
     // push to array
     employeeArray.push(newEntry);
 
+
     // clears input fields
     $('#firstName').val('');
     $('#lastName').val('');
@@ -37,12 +39,36 @@ function pushData() {
     $('#jobTitle').val('');
     $('#annualSalary').val('');
 
+    // puts data in table
+    runTable(employeeArray);
+
     return true;
-}
+} // end pushData
+
+function runTable(employeeArray) {
+    //clear table
+    $('.mainTable').empty();
+    // loop through array and display data in table
+    for (let i = 0; i < employeeArray.length; i++) {
+        let tableEntry = 
+            `<tr>
+                <td>${employeeArray[i].first}</td>
+                <td>${employeeArray[i].last}</td>
+                <td>${employeeArray[i].id}</td>
+                <td>${employeeArray[i].title}</td>
+                <td>${employeeArray[i].salary}</td>
+                <td><button type="text" id="deleteButton">Delete</button></td>
+
+            </tr>`;
+
+        $('.mainTable').append(tableEntry);           
+    }
+    return true;
+} // end runTable
 
 function removeData() {
     
-}
+} // end removeData
 
 
 //handle click event
